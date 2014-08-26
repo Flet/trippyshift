@@ -1,0 +1,32 @@
+{
+  "name": "trippyshift",
+  "version": "1.0.0",
+  "description": "use graphicsmagic to overlay a second copy at a random offset using the Add comosition. It looks trippy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Flet/trippyshift"
+  },
+  "keywords": [
+    "trippy",
+    "shift",
+    "revisit.link",
+    "revisitor",
+    "graphicsmagick",
+    "image",
+    "manipulate"
+  ],
+  "author": "Dan Flettre <flettre@gmail.com> (http://twitter.com/flettre)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Flet/trippyshift/issues"
+  },
+  "homepage": "https://github.com/Flet/trippyshift",
+  "dependencies": {
+    "gm": "^1.16.0",
+    "temp": "^0.8.1"
+  }
+}
