@@ -15,7 +15,7 @@ module.exports = function (options, buffer, callback) {
   }
 
   var shiftXMaxPercent = options.shiftXMaxPercent || 1,
-    shiftYMaxPercent = options.shiftYMaxPercent || 1
+    shiftYMaxPercent = options.shiftYMaxPercent || 1;
 
   gm(buffer).identify(function (err, data) {
     if (err) {
@@ -31,7 +31,7 @@ module.exports = function (options, buffer, callback) {
       }),
       tempImg = temp.path({
         suffix: '.' + data.format
-      });;
+      });
 
     //TODO: uhh, how about some async
     gm(buffer)
@@ -39,24 +39,21 @@ module.exports = function (options, buffer, callback) {
         gm(buffer)
           .roll(shiftX, shiftY)
           .write(tempImgRoll, function () {
-
-            gm().setFormat(data.format)
+            gm()
               .in('-page', '+0+0')
               .in(tempImgRoll)
               .in('-page', '+' + 0 + '+' + 0)
               .compose('Add')
               .in(tempImg)
-              .mosaic()
+              .flatten()
               .toBuffer(function (err, buff) {
                 fs.unlinkSync(tempImg);
                 if (err) callback(err);
-                gm(buff)
-                // .crop(imgWidth - shiftX, imgHeight - shiftY, shiftX, shiftY)
-                //  .resize(imgWidth, imgHeight)
-                .toBuffer(function (err, buffy) {
-                  if (err) callback(err);
-                  callback(null, buffy);
-                })
+                gm(buff).setFormat(data.format)
+                  .toBuffer(function (err, buffy) {
+                    if (err) callback(err);
+                    callback(null, buffy);
+                  });
               });
           });
       });
