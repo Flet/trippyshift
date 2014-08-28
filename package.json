@@ -1,6 +1,6 @@
 {
   "name": "trippyshift",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "use graphicsmagic to overlay a second copy at a random offset using the Add comosition. It looks trippy.",
   "main": "index.js",
   "scripts": {
